@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">IntentPractice</string>
+    <string-array name="animals_array">
+        <item></item>
+        <item>Cats</item>
+        <item>Dogs</item>
+        <item>Birds</item>
+    </string-array>
 </resources>
