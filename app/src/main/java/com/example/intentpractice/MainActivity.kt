@@ -12,10 +12,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inicializa o binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val intent = intent
         val emailFromSignIn = intent.getStringExtra("email")
         val passwordFromSignIn = intent.getStringExtra("password")
@@ -43,5 +41,7 @@ class MainActivity : AppCompatActivity() {
             intent2.putExtra("extra", "vindo da página inicial")
             startActivity(intent2)
         }
+
+
     }
 }

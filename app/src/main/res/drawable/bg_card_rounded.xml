@@ -1,0 +1,21 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Card Background Color -->
+    <solid android:color="#FFFFFF"/> <!-- You can adjust the color if needed -->
+
+    <!-- Rounded Corners -->
+    <corners android:radius="16dp"/> <!-- Adjust the radius for more or less rounding -->
+
+    <!-- Optional: Add padding inside the card (if needed) -->
+    <padding
+        android:left="16dp"
+        android:top="16dp"
+        android:right="16dp"
+        android:bottom="16dp" />
+
+    <!-- Optional: Add a subtle shadow or stroke around the card -->
+    <stroke
+        android:width="1dp"
+        android:color="#DDDDDD"/> <!-- Light grey stroke for subtle outline -->
+</shape>
+
+
