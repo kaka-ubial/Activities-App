@@ -4,8 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.intentpractice.databinding.ActivityMainMenuBinding
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.intentpractice.recipeActivity.RecipeListActivity
 
 class MainMenu : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
@@ -21,12 +20,10 @@ class MainMenu : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.signOutButton.apply {
-            ViewCompat.setOnApplyWindowInsetsListener(this) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
+        binding.ListRecipesButton.setOnClickListener {
+            val intent2 = Intent(this, RecipeListActivity::class.java)
+            intent2.putExtra("extra", "vindo do menu principal")
+            startActivity(intent2)
         }
     }
 }
