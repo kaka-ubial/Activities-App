@@ -17,7 +17,7 @@ class MainMenu : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
 

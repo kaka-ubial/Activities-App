@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">IntentPractice</string>
+    <string name="meallet">MealLet</string>
+    <string name="todo">TODO</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="senha">Senha</string>
+    <string name="email">Email</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="preencha_todos_os_campos_para_prosseguir">Preencha todos os campos para prosseguir.</string>
+    <string name="confirme_sua_senha">Confirme sua Senha</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="sair">Sair</string>
     <string-array name="animals_array">
 
     </string-array>
