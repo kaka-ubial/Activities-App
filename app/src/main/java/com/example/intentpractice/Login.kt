@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.intentpractice.ViewModel.LoginViewModel
 import com.example.intentpractice.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
+import com.example.intentpractice.SignIn
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,9 +36,24 @@ class Login : AppCompatActivity() {
             binding.alertMessage.visibility = View.GONE
 
             if (loginViewModel.isEmailValid(emailText) && loginViewModel.isPasswordValid(passwordText)) {
-                val intent = Intent(this, MainMenu::class.java)
-                intent.putExtra("email", emailText)
-                startActivity(intent)
+                lifecycleScope.launch {
+                    val user = loginViewModel.getUserByEmailAndPassword(emailText, passwordText) // Altere para obter o usuário completo
+                    if (user != null) {
+                        // Armazena o ID do usuário logado
+                        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putInt("logged_user_id", user.id) // Aqui você armazena o ID do usuário
+                        editor.apply()
+
+                        val intent = Intent(this@Login, MainMenu::class.java)
+                        intent.putExtra("email", emailText)
+                        startActivity(intent)
+                        finish() // Finaliza a LoginActivity
+                    } else {
+                        binding.alertMessage.text = "Credenciais inválidas. Tente novamente."
+                        binding.alertMessage.visibility = View.VISIBLE
+                    }
+                }
             } else {
                 if (!loginViewModel.isEmailValid(emailText)) {
                     binding.alertMessage.text = "Email inválido"
