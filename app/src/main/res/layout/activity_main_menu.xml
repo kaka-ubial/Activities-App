@@ -1,113 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/signOutButton"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainMenu">
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/logo_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/meallet"
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/logo_image"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="@+id/logo_image"
+        app:layout_constraintTop_toBottomOf="@+id/logo_image" />
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Sair"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toStartOf="@+id/profile"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/cat1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/cat2"
-        app:srcCompat="@drawable/cat1" />
-
-    <ImageView
-        android:id="@+id/cat2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:visibility="gone"
-        app:srcCompat="@drawable/cat2"
-        tools:layout_editor_absoluteX="369dp"
-        tools:layout_editor_absoluteY="658dp" />
-
-    <ImageView
-        android:id="@+id/cat3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="92dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cat2"
-        app:srcCompat="@drawable/cat3" />
-
-    <ImageView
-        android:id="@+id/dog1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/cat2"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/dog1"
-        tools:layout_editor_absoluteY="658dp" />
-
-    <ImageView
-        android:id="@+id/dog2"
-        android:layout_width="119dp"
-        android:layout_height="140dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dog3"
-        app:srcCompat="@drawable/dog2" />
-
-    <ImageView
-        android:id="@+id/dog3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:id="@+id/profile"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toEndOf="@+id/dog1"
-        app:srcCompat="@drawable/dog3" />
+        app:layout_constraintEnd_toStartOf="@+id/signOut"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usericon"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <ImageView
-        android:id="@+id/bird1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="44dp"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/birb1"
-        tools:layout_editor_absoluteY="658dp" />
-
-    <ImageView
-        android:id="@+id/bird2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="40dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/signOut"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bird3"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/birb2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logout"
+        tools:ignore="ContentDescription,DuplicateIds,ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/bird3"
@@ -131,4 +81,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

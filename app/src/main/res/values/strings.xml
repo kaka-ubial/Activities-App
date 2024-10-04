@@ -1,5 +1,25 @@
 <resources>
     <string name="app_name">IntentPractice</string>
+    <string name="meallet">MealLet</string>
+    <string name="todo">TODO</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="senha">Senha</string>
+    <string name="email">Email</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="preencha_todos_os_campos_para_prosseguir">Preencha todos os campos para prosseguir.</string>
+    <string name="confirme_sua_senha">Confirme sua Senha</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="sair">Sair</string>
+    <string name="bem_vindo_a_usu_rio">Bem vindo(a), usuário!</string>
+    <string name="senha_atual">Senha Atual</string>
+    <string name="senha_velha">Senha Atual</string>
+    <string name="atualizar_dados">Atualizar Dados</string>
+    <string name="deletar_conta">Deletar Conta</string>
+    <string name="data_de_nascimento">Data de Nascimento</string>
+    <string name="email_edit">Email</string>
+    <string name="nova_senha_edit">Nova Senha</string>
+    <string name="nova_senha">Nova Senha</string>
+    <string name="nome">Nome</string>
     <string-array name="animals_array">
 
     </string-array>
