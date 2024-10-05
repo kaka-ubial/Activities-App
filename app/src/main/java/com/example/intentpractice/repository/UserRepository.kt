@@ -26,14 +26,14 @@ class UserRepository(private val userDao: UserDao) {
         return rowsDeleted > 0
     }
 
-    suspend fun updatePassword(email: String, newPassword: String): Boolean {
-        val rowsUpdated = userDao.updatePassword(email, newPassword)
-        return rowsUpdated > 0
+    suspend fun updatePassword(userId: Int, newPassword: String): Int {
+        return userDao.updatePassword(userId, newPassword)
     }
 
     suspend fun updateName(userId: Int, newName: String): Int {
         return userDao.updateName(userId, newName)
     }
+
 
 
     suspend fun updateEmail(userId: Int, newEmail: String): Int {

@@ -6,8 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
-import com.example.intentpractice.Login
+import com.example.intentpractice.R
 import com.example.intentpractice.ViewModel.SignInViewModel
 import com.example.intentpractice.databinding.ActivitySignInBinding
 import kotlinx.coroutines.launch
@@ -20,6 +19,7 @@ class SignIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         binding.cancelText.setOnClickListener {
             val leave = Intent(this, Login::class.java)
@@ -49,26 +49,30 @@ class SignIn : AppCompatActivity() {
                         binding.alert2.visibility = View.VISIBLE
                     }
                     else -> {
+
                         lifecycleScope.launch {
-                            val isUserCreated =
-                                signInViewModel.createUser(name, emailText, passwordText1)
+                            val isUserCreated = signInViewModel.createUser(name, emailText, passwordText1)
+
                             runOnUiThread {
                                 if (isUserCreated) {
-                                    val createAcc = Intent(this@SignIn, Login::class.java)
-                                    createAcc.putExtra("email", emailText)
-                                    createAcc.putExtra("password", passwordText1)
+                                    val createAcc = Intent(this@SignIn, Login::class.java).apply {
+                                        putExtra("email", emailText)
+                                        putExtra("password", passwordText1)
+                                    }
                                     startActivity(createAcc)
+                                    finish()
                                 } else {
                                     binding.alert2.text = "Falha ao criar usuário."
                                     binding.alert2.visibility = View.VISIBLE
                                 }
                             }
                         }
-                    }  }
+                    }
+                }
             } else {
                 binding.alert2.text = "Por favor, preencha todos os campos."
                 binding.alert2.visibility = View.VISIBLE
             }
         }
     }
-}  
+}

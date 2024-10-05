@@ -1,5 +1,6 @@
 package com.example.intentpractice
 
+import com.example.intentpractice.UserProfile
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -18,22 +19,22 @@ class MainMenu : AppCompatActivity() {
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.ListRecipesButton.setOnClickListener {
+            val intent2 = Intent(this, RecipeListActivity::class.java)
+            intent2.putExtra("extra", "vindo do menu principal")
+            startActivity(intent2)
+        }
+
         binding.profile.setOnClickListener {
             val profileIntent = Intent(this, UserProfile::class.java)
             startActivity(profileIntent)
         }
 
-        binding.ListRecipesButton.setOnClickListener {
-            val intent2 = Intent(this, RecipeListActivity::class.java)
-            intent2.putExtra("extra", "vindo do menu principal")
-            startActivity(intent2)
-
         binding.signOut.setOnClickListener {
-            mainMenuViewModel.performLogout(this) // Usar a instância do ViewModel
+            mainMenuViewModel.performLogout(this)
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
             finish()
-
         }
     }
 }

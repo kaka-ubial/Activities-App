@@ -32,6 +32,11 @@ class UserProfileViewModel(private val userRepository: UserRepository) : ViewMod
         return rowsUpdated > 0
     }
 
+    suspend fun updatePassword(userId: Int, newPassword: String): Boolean {
+        val rowsUpdated = userRepository.updatePassword(userId, newPassword)
+        return rowsUpdated > 0
+    }
+
     suspend fun deleteUserAccount(email: String): Boolean {
         val rowsDeleted = userRepository.deleteUserAccount(email)
         return rowsDeleted

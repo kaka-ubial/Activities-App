@@ -32,7 +32,6 @@
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:text="@string/nova_senha_edit"
         app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/passwordEdit"
@@ -48,7 +47,6 @@
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:text="@string/senha_velha"
         app:layout_constraintEnd_toEndOf="@+id/emailEdit"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emailEdit"
@@ -161,7 +159,7 @@
         app:layout_constraintStart_toStartOf="@+id/button2" />
 
     <ImageView
-        android:id="@+id/goBackBtn"
+        android:id="@+id/goBackButton"
         android:layout_width="33dp"
         android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"

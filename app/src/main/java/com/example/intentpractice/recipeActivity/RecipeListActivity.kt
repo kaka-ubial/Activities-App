@@ -8,7 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.intentpractice.MainActivity
+import com.example.intentpractice.Login
+import com.example.intentpractice.MainMenu
 import com.example.intentpractice.R
 import com.example.intentpractice.api.Endpoint
 import com.example.intentpractice.utils.NetworkUtils
@@ -29,13 +30,13 @@ class RecipeListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.signOutButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
 
-        binding.button.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        binding.goBackButton.setOnClickListener {
+            val goBack = Intent(this, MainMenu::class.java)
+            startActivity(goBack)
         }
 
         binding.signOutButton.apply {
