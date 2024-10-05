@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.intentpractice.ViewModel.MainMenuViewModel
 import com.example.intentpractice.databinding.ActivityMainMenuBinding
+import com.example.intentpractice.recipeActivity.RecipeListActivity
 
 class MainMenu : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
@@ -22,11 +23,17 @@ class MainMenu : AppCompatActivity() {
             startActivity(profileIntent)
         }
 
+        binding.ListRecipesButton.setOnClickListener {
+            val intent2 = Intent(this, RecipeListActivity::class.java)
+            intent2.putExtra("extra", "vindo do menu principal")
+            startActivity(intent2)
+
         binding.signOut.setOnClickListener {
             mainMenuViewModel.performLogout(this) // Usar a instância do ViewModel
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
             finish()
+
         }
     }
 }
