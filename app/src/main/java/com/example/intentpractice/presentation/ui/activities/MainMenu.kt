@@ -18,7 +18,7 @@ class MainMenu : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.ListRecipesButton.setOnClickListener {
-            val intent2 = Intent(this, RecipeListActivity::class.java)
+            val intent2 = Intent(this, RecipeList::class.java)
             intent2.putExtra("extra", "vindo do menu principal")
             startActivity(intent2)
         }

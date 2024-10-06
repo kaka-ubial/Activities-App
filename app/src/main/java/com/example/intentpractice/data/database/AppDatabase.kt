@@ -26,9 +26,9 @@ import com.example.intentpractice.data.model.User
 
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
-    abstract fun nomesIngredienteDao(): IngredientNamesDao
-    abstract fun ingredientesBaseDao(): BaseIngredientsDao
-    abstract fun receitaModelDao(): RecipeDao
+    abstract fun ingredientNamesDao(): IngredientNamesDao
+    abstract fun baseIngredientsDao(): BaseIngredientsDao
+    abstract fun recipeDao(): RecipeDao
 
     companion object {
         @Volatile

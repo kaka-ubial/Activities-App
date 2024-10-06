@@ -4,9 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.intentpractice.data.model.Recipe
 import com.example.intentpractice.data.repository.RecipeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RecipeViewModel(private val receitaRepository: RecipeRepository) : ViewModel() {
+@HiltViewModel
+class RecipeViewModel @Inject constructor(
+    private val receitaRepository: RecipeRepository
+) : ViewModel() {
     private val _receitasModels = mutableListOf<Recipe>()
     val receitasModels: List<Recipe> get() = _receitasModels
 

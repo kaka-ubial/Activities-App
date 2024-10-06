@@ -23,7 +23,7 @@
             android:name=".presentation.ui.activities.MainMenu"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.activities.RecipeListActivity"
+            android:name=".presentation.ui.activities.RecipeList"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activities.SignIn"
