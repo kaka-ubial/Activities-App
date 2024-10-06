@@ -15,12 +15,12 @@ import com.example.intentpractice.presentation.ui.adapters.RL_RecyclerViewAdapte
 import com.example.intentpractice.presentation.viewmodel.RecipeViewModel
 
 
-class RecipeListActivity : AppCompatActivity() {
+class RecipeList : AppCompatActivity() {
     private lateinit var recipeRepository: RecipeRepository
     private lateinit var recipeViewModel: RecipeViewModel
     private lateinit var binding: ActivityRecipeListBinding
     private lateinit var adapter: RL_RecyclerViewAdapter
-    private val receitasModels: ArrayList<Recipe> = ArrayList()
+    private val recipeModel: ArrayList<Recipe> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class RecipeListActivity : AppCompatActivity() {
         binding = ActivityRecipeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val receitaModelDao = AppDatabase.getDatabase(applicationContext).receitaModelDao()
+        val receitaModelDao = AppDatabase.getDatabase(applicationContext).recipeDao()
         recipeRepository = RecipeRepository(receitaModelDao)
 
         recipeViewModel = ViewModelProvider(this, RecipeViewModelFactory(recipeRepository)).get(
@@ -43,13 +43,13 @@ class RecipeListActivity : AppCompatActivity() {
         }
 
         val recyclerView: RecyclerView = binding.mReciclerList
-        adapter = RL_RecyclerViewAdapter(this, receitasModels)
+        adapter = RL_RecyclerViewAdapter(this, recipeModel)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         recipeViewModel.fetchReceitas {
-            receitasModels.clear()  // Limpa a lista antiga
-            receitasModels.addAll(recipeViewModel.receitasModels)  // Adiciona as novas receitas
+            recipeModel.clear()  // Limpa a lista antiga
+            recipeModel.addAll(recipeViewModel.receitasModels)  // Adiciona as novas receitas
             adapter.notifyDataSetChanged()  // Notifica o adapter sobre as mudanças
         }
     }
