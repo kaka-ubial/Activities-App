@@ -5,7 +5,7 @@
     android:id="@+id/signOut"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignIn">
+    tools:context=".presentation.ui.activities.SignIn">
 
     <EditText
         android:id="@+id/emailsignIn"
