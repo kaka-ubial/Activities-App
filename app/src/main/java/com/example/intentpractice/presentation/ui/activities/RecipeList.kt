@@ -4,16 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.intentpractice.databinding.ActivityRecipeListBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.intentpractice.databinding.ActivityRecipeListBinding
 import com.example.intentpractice.data.repository.RecipeRepository
 import com.example.intentpractice.presentation.ui.factory.RecipeViewModelFactory
 import com.example.intentpractice.data.model.Recipe
 import com.example.intentpractice.data.database.AppDatabase
 import com.example.intentpractice.presentation.ui.adapters.RL_RecyclerViewAdapter
 import com.example.intentpractice.presentation.viewmodel.RecipeViewModel
-
 
 class RecipeList : AppCompatActivity() {
     private lateinit var recipeRepository: RecipeRepository
@@ -32,7 +31,8 @@ class RecipeList : AppCompatActivity() {
         recipeRepository = RecipeRepository(receitaModelDao)
 
         recipeViewModel = ViewModelProvider(this, RecipeViewModelFactory(recipeRepository)).get(
-            RecipeViewModel::class.java)
+            RecipeViewModel::class.java
+        )
 
         binding.signOutButton.setOnClickListener {
             startActivity(Intent(this, Login::class.java))
@@ -47,12 +47,14 @@ class RecipeList : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        recipeViewModel.fetchReceitas {
-            recipeModel.clear()  // Limpa a lista antiga
-            recipeModel.addAll(recipeViewModel.receitasModels)  // Adiciona as novas receitas
-            adapter.notifyDataSetChanged()  // Notifica o adapter sobre as mudanças
+        // Observe the receitasModels LiveData
+        recipeViewModel.receitasModels.observe(this) { newReceitas ->
+            recipeModel.clear()
+            recipeModel.addAll(newReceitas)
+            adapter.notifyDataSetChanged()
         }
+
+        // Call fetchReceitas to initiate data fetch
+        recipeViewModel.fetchReceitas { /* Callback if needed */ }
     }
-
-
 }

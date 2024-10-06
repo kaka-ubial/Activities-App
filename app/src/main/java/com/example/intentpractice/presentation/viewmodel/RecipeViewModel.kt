@@ -1,5 +1,7 @@
 package com.example.intentpractice.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.intentpractice.data.model.Recipe
@@ -12,26 +14,17 @@ import javax.inject.Inject
 class RecipeViewModel @Inject constructor(
     private val receitaRepository: RecipeRepository
 ) : ViewModel() {
-    private val _receitasModels = mutableListOf<Recipe>()
-    val receitasModels: List<Recipe> get() = _receitasModels
+    private val _receitasModels = MutableLiveData<List<Recipe>>()
+    val receitasModels: LiveData<List<Recipe>> get() = _receitasModels
 
     fun fetchReceitas(onDataFetched: () -> Unit) {
         receitaRepository.getReceitasFromApi(
             onSuccess = { newReceitas ->
                 viewModelScope.launch {
-                    // Primeiro, exclui todas as receitas do banco de dados
-                    receitaRepository.deleteAll()
+                    receitaRepository.insertAll(newReceitas)
 
-                    // Agora insere as novas receitas da API
-                    newReceitas.forEach { receita ->
-                        receitaRepository.insertFromApi(receita)
-                    }
+                    _receitasModels.postValue(receitaRepository.getAllReceitas())
 
-                    // Atualiza a lista carregando diretamente do banco de dados
-                    _receitasModels.clear()
-                    _receitasModels.addAll(receitaRepository.getAllReceitas())
-
-                    // Notifica que os dados foram carregados e estão prontos para exibição
                     onDataFetched()
                 }
             },
@@ -39,5 +32,12 @@ class RecipeViewModel @Inject constructor(
                 println("Erro ao buscar receitas: $errorMessage")
             }
         )
+    }
+
+    fun insertRecipe(recipe: Recipe) {
+        viewModelScope.launch {
+            receitaRepository.insert(recipe)
+            _receitasModels.postValue(receitaRepository.getAllReceitas())
+        }
     }
 }

@@ -19,43 +19,23 @@ import javax.inject.Inject
 class RecipeRepository @Inject constructor(
     private val recipeDao: RecipeDao,
 ) {
-
     private val retrofitClient = NetworkUtils.getRetrofitInstance("https://api-receitas-at4n.onrender.com")
     private val endpoint = retrofitClient.create(Endpoint::class.java)
 
     suspend fun insert(recipe: Recipe) {
-        if (recipe.id == 0) {
-            val newId = generateNewId()
-            val receitaComNovoId = recipe.copy(id = newId)
-            recipeDao.insert(receitaComNovoId)
-        } else {
-            // Se a receita já tem um ID (como as vindas da API), insira diretamente
-            recipeDao.insert(recipe)
-        }
+        recipeDao.insert(recipe)
     }
 
-    suspend fun insertFromApi(recipe: Recipe) {
-        val existingId = recipeDao.getById(recipe.id)
-        if (existingId == null) {
-            recipeDao.insert(recipe)
-        } else {
-            val newId = generateNewId()
-            val receitaComNovoId = recipe.copy(id = newId)
-            recipeDao.insert(receitaComNovoId)
-        }
+    suspend fun insertAll(recipes: List<Recipe>) {
+        recipes.forEach { recipe -> insert(recipe) }
     }
 
     suspend fun getAllReceitas(): List<Recipe> {
-        return recipeDao.getAllReceitas() // Esse método agora existe
+        return recipeDao.getAllReceitas()
     }
 
     suspend fun deleteAll() {
         recipeDao.deleteAll()
-    }
-
-    suspend fun generateNewId(): Int {
-        val maxId = recipeDao.getMaxId() // Implementar no DAO
-        return (maxId ?: 0) + 1 // Incrementa o maior ID encontrado
     }
 
     fun getReceitasFromApi(onSuccess: (List<Recipe>) -> Unit, onError: (String) -> Unit) {
@@ -68,10 +48,8 @@ class RecipeRepository @Inject constructor(
                         val newReceitasModels: List<Recipe> = gson.fromJson(jsonArray, receitaType)
 
                         CoroutineScope(Dispatchers.IO).launch {
-                            newReceitasModels.forEach { receita ->
-                                recipeDao.insert(receita)
-                            }
-                            println("Receitas inseridas: ${newReceitasModels.size}")
+                            deleteAll()
+                            insertAll(newReceitasModels)
 
                             withContext(Dispatchers.Main) {
                                 onSuccess(newReceitasModels)
@@ -82,7 +60,6 @@ class RecipeRepository @Inject constructor(
                     onError("Erro na resposta: ${response.code()}")
                 }
             }
-
 
             override fun onFailure(call: Call<JsonArray>, t: Throwable) {
                 onError("Erro na requisição: ${t.message}")

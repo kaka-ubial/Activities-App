@@ -40,8 +40,10 @@ class RL_RecyclerViewAdapter(private val context: Context, private val receitasM
         val nameTextView: TextView = itemView.findViewById(R.id.textView4)
         val timeTextView: TextView = itemView.findViewById(R.id.textView5)
         val button: Button = itemView.findViewById(R.id.button4)
+    }
 
-
-
+    fun updateReceitas(novasReceitas: List<Recipe>) {
+        receitasModels.clear()
+        receitasModels.addAll(novasReceitas)
     }
 }
