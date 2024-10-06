@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.intentpractice.presentation.viewmodel.LoginViewModel
 import com.example.intentpractice.databinding.ActivityMainBinding
+import com.example.intentpractice.utils.LoadingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -43,7 +44,7 @@ class Login : AppCompatActivity() {
 
                         delay(2000) // Simulação de atraso antes de iniciar a próxima atividade
 
-                        val intent = Intent(this@Login, MainMenu::class.java).apply {
+                        val intent = Intent(this@Login, LoadingActivity::class.java).apply {
                             putExtra("email", emailText)
                         }
                         startActivity(intent)
