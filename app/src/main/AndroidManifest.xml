@@ -17,19 +17,19 @@
         android:theme="@style/Theme.IntentPractice"
         tools:targetApi="31">
         <activity
-            android:name=".UserProfile"
+            android:name=".presentation.ui.activities.UserProfile"
             android:exported="false" />
         <activity
-            android:name=".MainMenu"
+            android:name=".presentation.ui.activities.MainMenu"
             android:exported="false" />
         <activity
-            android:name=".recipeActivity.RecipeListActivity"
+            android:name=".presentation.ui.activities.RecipeListActivity"
             android:exported="false" />
         <activity
-            android:name=".SignIn"
+            android:name=".presentation.ui.activities.SignIn"
             android:exported="true" />
         <activity
-            android:name=".Login"
+            android:name=".presentation.ui.activities.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
