@@ -1,6 +1,10 @@
 [versions]
-agp = "8.5.1"
-kotlin = "1.9.0"
+activityKtx = "1.9.2"
+agp = "8.7.0"
+appcompatVersion = "1.6.1"
+coreKtxVersion = "1.12.0"
+gradle = "8.7"
+kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -9,6 +13,9 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.1"
 constraintlayout = "2.1.4"
+navigationFragmentKtx = "2.8.2"
+navigationFragmentKtxVersion = "2.2.0-rc03"
+navigationUiKtx = "2.8.2"
 retrofit = "2.11.0"
 converterGson = "2.11.0"
 picasso = "2.71828"
@@ -17,12 +24,27 @@ roomCompiler = "2.6.1"
 roomKtx = "2.6.1"
 navigation = "2.7.0"
 lifecycle = "2.6.2"
+lifecycleLivedataKtx = "2.2.0-rc03"
 sqlite = "2.4.0"
 gson = "2.11.0"
-adapters = "3.2.0-alpha11"
+hilt = "2.44"
 
 [libraries]
+activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
+androidx-appcompat-v161 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
+androidx-core-ktx-v1120 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+androidx-material = { group = "com.google.android.material", name = "material", version = "1.4.0" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-livedata-ktx-v220rc03 = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-navigation-fragment-ktx-v220rc03 = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+appcompat = { module = "androidx.appcompat:appcompat" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout" }
+core-ktx = { module = "androidx.core:core-ktx" }
+google-material = { module = "com.google.android.material:material" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+hilt-android = { group = "com.google.dagger", name = "hilt", version = "2.44" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt", version = "2.44" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -30,6 +52,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+navigation-fragment-ktx-v220rc03 = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converterGson" }
 picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
@@ -40,9 +63,10 @@ androidx-navigation = { group = "androidx.navigation", name = "navigation-fragme
 androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
 androidx-sqlite = { group = "androidx.sqlite", name = "sqlite", version.ref = "sqlite" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
-androidx-adapters = { group = "androidx.databinding", name = "adapters", version.ref = "adapters" }
+retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson" }
+retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit" }
+squareup-picasso = { module = "com.squareup.picasso:picasso" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
