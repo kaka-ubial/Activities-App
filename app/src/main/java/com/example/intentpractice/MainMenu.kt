@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.intentpractice.ViewModel.MainMenuViewModel
 import com.example.intentpractice.databinding.ActivityMainMenuBinding
 import com.example.intentpractice.recipeActivity.RecipeListActivity
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainMenu : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
