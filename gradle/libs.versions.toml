@@ -3,6 +3,7 @@ activityKtx = "1.9.2"
 agp = "8.7.0"
 appcompatVersion = "1.6.1"
 coreKtxVersion = "1.12.0"
+gradle = "8.7"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -41,6 +42,7 @@ appcompat = { module = "androidx.appcompat:appcompat" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout" }
 core-ktx = { module = "androidx.core:core-ktx" }
 google-material = { module = "com.google.android.material:material" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 hilt-android = { group = "com.google.dagger", name = "hilt", version = "2.44" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt", version = "2.44" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
