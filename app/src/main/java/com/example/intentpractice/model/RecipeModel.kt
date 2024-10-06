@@ -1,6 +1,6 @@
-package com.example.intentpractice.recipeActivity
+package com.example.intentpractice.model
 
-data class ReceitaModel (
+data class Recipe (
     val id: Int,
     val receita: String,
     val ingredientes: String,
@@ -8,17 +8,17 @@ data class ReceitaModel (
     val link_imagem: String,
     val tipo: String,
     val created_at: String,
-    val ingredientesBase: List<IngredientesBase>
+    val ingredientesBase: List<BaseIngredients>
 )
 
-data class IngredientesBase (
+data class BaseIngredients (
     val id: Int,
-    val nome_ingrediente: List<NomesIngrediente>,
+    val nome_ingrediente: List<IngredientName>,
     val receitaId: String,
     val created_at: String
 )
 
-data class NomesIngrediente (
+data class IngredientName (
     val nome: String,
     val quantidade: String
 )
