@@ -3,25 +3,25 @@ package com.example.intentpractice.recipeActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.intentpractice.databinding.ActivityRecipeListBinding
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intentpractice.Login
 import com.example.intentpractice.MainMenu
+import com.example.intentpractice.repository.ReceitaRepository
+import com.example.intentpractice.ViewModel.RecipeViewModelFactory
+import com.example.intentpractice.model.ReceitaModel
+import com.example.intentpractice.database.AppDatabase
 import com.example.intentpractice.R
-import com.example.intentpractice.api.Endpoint
-import com.example.intentpractice.utils.NetworkUtils
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.google.gson.reflect.TypeToken
-import retrofit2.Call
-import retrofit2.Response
+
 
 class RecipeListActivity : AppCompatActivity() {
+    private lateinit var recipeRepository: ReceitaRepository
+    private lateinit var recipeViewModel: RecipeViewModel
     private lateinit var binding: ActivityRecipeListBinding
-    val receitasModels: ArrayList<ReceitaModel> = ArrayList()
+    private lateinit var adapter: RL_RecyclerViewAdapter
+    private val receitasModels: ArrayList<ReceitaModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,73 +29,30 @@ class RecipeListActivity : AppCompatActivity() {
         binding = ActivityRecipeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val receitaModelDao = AppDatabase.getDatabase(applicationContext).receitaModelDao()
+        recipeRepository = ReceitaRepository(receitaModelDao)
+
+        recipeViewModel = ViewModelProvider(this, RecipeViewModelFactory(recipeRepository)).get(RecipeViewModel::class.java)
+
         binding.signOutButton.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Login::class.java))
         }
 
         binding.goBackButton.setOnClickListener {
-            val goBack = Intent(this, MainMenu::class.java)
-            startActivity(goBack)
+            startActivity(Intent(this, MainMenu::class.java))
         }
 
-        binding.signOutButton.apply {
-            ViewCompat.setOnApplyWindowInsetsListener(this) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
+        val recyclerView: RecyclerView = binding.mReciclerList
+        adapter = RL_RecyclerViewAdapter(this, receitasModels)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        recipeViewModel.fetchReceitas {
+            receitasModels.clear()  // Limpa a lista antiga
+            receitasModels.addAll(recipeViewModel.receitasModels)  // Adiciona as novas receitas
+            adapter.notifyDataSetChanged()  // Notifica o adapter sobre as mudanças
         }
-
-        val reciclerView: RecyclerView = findViewById(R.id.mReciclerList)
-
-        val adapter: RL_RecyclerViewAdapter = RL_RecyclerViewAdapter(this, receitasModels)
-
-        reciclerView.adapter = adapter
-        reciclerView.layoutManager = LinearLayoutManager(this)
-
-
-        setupRecipesModels{
-            adapter.notifyDataSetChanged()
-            println(receitasModels)
-        }
-
     }
 
-    private fun setupRecipesModels(onDataFetched: () -> Unit) {
-        val retrofitClient = NetworkUtils.getRetrofitInstance("https://api-receitas-at4n.onrender.com")
-        val endpoint = retrofitClient.create(Endpoint::class.java)
 
-        endpoint.getReceitas().enqueue(object : retrofit2.Callback<JsonArray> {
-            override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
-                if (response.isSuccessful) {
-                    response.body()?.let { jsonArray ->
-                        val gson = Gson()
-                        val receitaType = object : TypeToken<List<ReceitaModel>>() {}.type
-                        val newReceitasModels: List<ReceitaModel> = gson.fromJson(jsonArray, receitaType)
-
-                        // Clear the existing data and add new data
-                        receitasModels.clear()
-                        receitasModels.addAll(newReceitasModels)
-
-                        // Log each recipe for debugging
-                        receitasModels.forEach { receita ->
-                            println("Receita: ${receita.receita}")
-                        }
-
-                        // Invoke the callback to update the RecyclerView
-                        onDataFetched()
-                    } ?: run {
-                        println("Resposta do servidor vazia")
-                    }
-                } else {
-                    println("Erro na resposta: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<JsonArray>, t: Throwable) {
-                println("Erro na requisição: ${t.message}")
-            }
-        })
-    }
 }

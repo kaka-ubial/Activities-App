@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intentpractice.R
+import com.example.intentpractice.model.ReceitaModel
 
 class RL_RecyclerViewAdapter(private val context: Context, private val receitasModels: ArrayList<ReceitaModel>) : RecyclerView.Adapter<RL_RecyclerViewAdapter.MyViewHolder>() {
 

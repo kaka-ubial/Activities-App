@@ -19,6 +19,7 @@ navigation = "2.7.0"
 lifecycle = "2.6.2"
 sqlite = "2.4.0"
 gson = "2.11.0"
+adapters = "3.2.0-alpha11"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +40,7 @@ androidx-navigation = { group = "androidx.navigation", name = "navigation-fragme
 androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
 androidx-sqlite = { group = "androidx.sqlite", name = "sqlite", version.ref = "sqlite" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+androidx-adapters = { group = "androidx.databinding", name = "adapters", version.ref = "adapters" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
