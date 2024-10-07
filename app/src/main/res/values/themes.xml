@@ -1,9 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.IntentPractice" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+
+    <!-- Tema da aplicação sem Action Bar -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Define a cor primária para a navbar e outros elementos -->
+        <item name="colorPrimary">@color/navbar_orange</item>
+        <item name="colorPrimaryDark">@color/navbar_orange</item>
+        <item name="colorAccent">@color/navbar_orange</item>
+
+        <!-- Outras personalizações de tema podem ser adicionadas aqui -->
     </style>
 
-    <style name="Theme.IntentPractice" parent="Base.Theme.IntentPractice" />
 </resources>

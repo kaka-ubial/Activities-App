@@ -11,9 +11,9 @@ interface BaseIngredientsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(ingredientesBase: BaseIngredients)
 
-    @Query("SELECT * FROM ingredientes_table")
+    @Query("SELECT * FROM ingredientesbase")
     suspend fun getAllIngredientesBase(): List<BaseIngredients>
 
-    @Query("DELETE FROM ingredientes_table")
+    @Query("DELETE FROM ingredientesbase")
     suspend fun deleteAll()
 }

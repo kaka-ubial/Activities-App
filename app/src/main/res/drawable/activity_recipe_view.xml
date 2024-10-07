@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".presentation.ui.activities.RecipeView">
+
+    <ImageView
+        android:id="@+id/goBackButton"
+        android:layout_width="33dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/volta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Botão de voltar" />
+
+    <TextView
+        android:id="@+id/recipeTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        app:layout_constraintTop_toBottomOf="@id/goBackButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Nome da Receita" />
+
+    <!-- Imagem da receita -->
+    <ImageView
+        android:id="@+id/recipeImageView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/recipeTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Imagem da Receita"
+        android:src="@android:drawable/ic_menu_gallery" />
+
+    <!-- Ingredientes -->
+    <TextView
+        android:id="@+id/recipeIngredientsTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Ingredientes:"
+        app:layout_constraintTop_toBottomOf="@id/recipeImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/recipeIngredientsListTextView"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="1. Passo 1\n2. Passo 2\n3. Passo 3"
+        app:layout_constraintTop_toBottomOf="@id/recipeIngredientsTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Modo de preparo -->
+    <TextView
+        android:id="@+id/recipeMethodTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Modo de preparo:"
+        app:layout_constraintTop_toBottomOf="@id/recipeIngredientsListTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Instruções de preparo (exemplo) -->
+    <TextView
+        android:id="@+id/recipeMethodStepsTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="1. Passo 1\n2. Passo 2\n3. Passo 3"
+        app:layout_constraintTop_toBottomOf="@id/recipeMethodTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
