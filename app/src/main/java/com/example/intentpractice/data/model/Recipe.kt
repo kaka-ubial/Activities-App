@@ -10,7 +10,7 @@ data class Recipe (
     @PrimaryKey val id: Int,
     val receita: String?,
     val ingredientes: String?,
-    val modo_de_preparo: String?,
+    val modo_preparo: String?,
     val link_imagem: String?,
     val tipo: String?,
     val created_at: String?,
