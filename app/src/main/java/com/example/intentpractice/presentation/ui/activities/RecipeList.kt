@@ -43,18 +43,26 @@ class RecipeList : AppCompatActivity() {
         }
 
         val recyclerView: RecyclerView = binding.mReciclerList
-        adapter = RL_RecyclerViewAdapter(this, recipeModel)
+        // Passando a lista de receitas e comportamento de clique
+        adapter = RL_RecyclerViewAdapter(this, recipeModel) { recipe ->
+            val intent = Intent(this, RecipeView::class.java).apply {
+                putExtra("RECIPE_TITLE", recipe.receita)
+                putExtra("RECIPE_TYPE", recipe.tipo)
+                // Adicione outros dados da receita que deseja passar
+            }
+            startActivity(intent)
+        }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Observe the receitasModels LiveData
+        // Observe o receitasModels LiveData
         recipeViewModel.receitasModels.observe(this) { newReceitas ->
             recipeModel.clear()
             recipeModel.addAll(newReceitas)
             adapter.notifyDataSetChanged()
         }
 
-        // Call fetchReceitas to initiate data fetch
-        recipeViewModel.fetchReceitas { /* Callback if needed */ }
+        // Chama fetchReceitas para iniciar o fetch de dados
+        recipeViewModel.fetchReceitas { /* Callback se necessário */ }
     }
 }

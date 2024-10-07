@@ -6,70 +6,90 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
+
+    android:fitsSystemWindows="true"
     tools:context=".presentation.ui.activities.MainMenu">
 
-    <TextView
-        android:id="@+id/logo_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/meallet"
-        android:textColor="#333333"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/logo_image"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toStartOf="@+id/logo_image"
-        app:layout_constraintTop_toBottomOf="@+id/logo_image" />
+    <!-- Fundo da Navbar -->
+    <View
+        android:id="@+id/navbar_background"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@color/navbar_orange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
+    <!-- Navbar Superior: Imagem do Logo -->
     <ImageView
         android:id="@+id/logo_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/todo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:src="@drawable/logo"
-        app:layout_constraintEnd_toStartOf="@+id/profile"
-        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/navbar_background"
+        app:layout_constraintBottom_toBottomOf="@id/navbar_background"
+        android:layout_marginStart="16dp" />
 
+    <!-- Navbar Superior: Texto "MealLet" -->
+    <TextView
+        android:id="@+id/logo_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/meallet"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintStart_toEndOf="@id/logo_image"
+        app:layout_constraintEnd_toStartOf="@id/profile"
+        app:layout_constraintTop_toTopOf="@id/navbar_background"
+        app:layout_constraintBottom_toBottomOf="@id/navbar_background"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Navbar Superior: Botão de Perfil -->
     <ImageView
         android:id="@+id/profile"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/signOut"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/usericon"
-        tools:ignore="ContentDescription,ImageContrastCheck" />
+        android:src="@drawable/usericon"
+        app:layout_constraintEnd_toStartOf="@id/signOut"
+        app:layout_constraintTop_toTopOf="@id/navbar_background"
+        app:layout_constraintBottom_toBottomOf="@id/navbar_background"
+        android:layout_marginEnd="8dp" />
 
+    <!-- Navbar Superior: Botão de Sair -->
     <ImageView
         android:id="@+id/signOut"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
+        android:src="@drawable/logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logout"
-        tools:ignore="ContentDescription,DuplicateIds,ImageContrastCheck" />
+        app:layout_constraintTop_toTopOf="@id/navbar_background"
+        app:layout_constraintBottom_toBottomOf="@id/navbar_background"
+        android:layout_marginEnd="16dp" />
 
+    <!-- Botão "Ver Receitas" Centralizado -->
     <Button
         android:id="@+id/ListRecipesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#DD763E"
+        android:backgroundTint="@color/navbar_orange"
         android:text="Ver Receitas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/navbar_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_text"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,15 +12,15 @@ interface RecipeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(recipe: Recipe)
 
-    @Query("SELECT MAX(id) FROM receita_table")
+    @Query("SELECT MAX(id) FROM receitas")
     suspend fun getMaxId(): Int?
 
-    @Query("SELECT * FROM receita_table")
+    @Query("SELECT * FROM receitas")
     suspend fun getAllReceitas(): List<Recipe>
 
-    @Query("SELECT * FROM receita_table WHERE id = :id LIMIT 1")
+    @Query("SELECT * FROM receitas WHERE id = :id LIMIT 1")
     suspend fun getById(id: Int): Recipe?
 
-    @Query("DELETE FROM receita_table")
+    @Query("DELETE FROM receitas")
     suspend fun deleteAll()
 }

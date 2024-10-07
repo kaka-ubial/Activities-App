@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.IntentPractice"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".utils.LoadingActivity"
@@ -27,6 +27,9 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activities.RecipeList"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.activities.RecipeView"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activities.SignIn"
