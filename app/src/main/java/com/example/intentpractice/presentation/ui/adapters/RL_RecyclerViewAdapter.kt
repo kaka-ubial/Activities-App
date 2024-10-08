@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intentpractice.R
 import com.example.intentpractice.data.model.Recipe
+import com.squareup.picasso.Picasso
 
 class RL_RecyclerViewAdapter(
     private val context: Context,
@@ -30,6 +31,9 @@ class RL_RecyclerViewAdapter(
         holder.button.setOnClickListener {
             println("Botão clicado")
         }
+        println(recipe.link_imagem)
+        Picasso.get().load(recipe.link_imagem).into(holder.imageView)
+
 
         // Clique no item da receita
         holder.itemView.setOnClickListener {

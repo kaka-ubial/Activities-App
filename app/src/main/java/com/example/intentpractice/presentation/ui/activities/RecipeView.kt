@@ -1,15 +1,26 @@
 package com.example.intentpractice.presentation.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.intentpractice.R
+import com.example.intentpractice.databinding.ActivityRecipeViewBinding
+import com.squareup.picasso.Picasso
 
 class RecipeView : AppCompatActivity() {
+
+    private lateinit var binding: ActivityRecipeViewBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recipe_view)
+        binding = ActivityRecipeViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.goBackButton.setOnClickListener {
+            startActivity(Intent(this, MainMenu::class.java))
+        }
 
         val title = intent.getStringExtra("RECIPE_TITLE")
         val ingredients = intent.getStringExtra("RECIPE_INGREDIENTS")
@@ -24,6 +35,9 @@ class RecipeView : AppCompatActivity() {
         titleTextView.text = title
         ingredientsTextView.text = ingredients
         methodTextView.text = method
+
+        println(imageUrl)
+        Picasso.get().load(imageUrl).into(imageView)
 
     }
 }
