@@ -19,7 +19,7 @@ import com.example.intentpractice.data.model.User
 @Database
     (
     entities = [User::class, IngredientNames::class, BaseIngredients::class, Recipe::class],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

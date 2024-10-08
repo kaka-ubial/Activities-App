@@ -16,7 +16,6 @@ class RecipeView : AppCompatActivity() {
         val method = intent.getStringExtra("RECIPE_METHOD")
         val imageUrl = intent.getStringExtra("RECIPE_IMAGE")
 
-        // Exibir os dados na tela
         val titleTextView: TextView = findViewById(R.id.recipeTitleTextView)
         val ingredientsTextView: TextView = findViewById(R.id.recipeIngredientsListTextView)
         val methodTextView: TextView = findViewById(R.id.recipeMethodStepsTextView)
