@@ -48,7 +48,9 @@ class RecipeList : AppCompatActivity() {
             val intent = Intent(this, RecipeView::class.java).apply {
                 putExtra("RECIPE_TITLE", recipe.receita)
                 putExtra("RECIPE_TYPE", recipe.tipo)
-                // Adicione outros dados da receita que deseja passar
+                putExtra("RECIPE_INGREDIENTS", recipe.ingredientes)
+                putExtra("RECIPE_METHOD", recipe.modo_preparo)
+                putExtra("RECIPE_IMAGE", recipe.link_imagem)
             }
             startActivity(intent)
         }
