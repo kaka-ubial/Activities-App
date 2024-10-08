@@ -12,10 +12,10 @@
         android:layout_width="33dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="Botão de voltar"
         android:src="@drawable/volta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Botão de voltar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/recipeTitleTextView"
