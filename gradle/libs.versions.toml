@@ -27,6 +27,8 @@ lifecycleLivedataKtx = "2.2.0-rc03"
 sqlite = "2.4.0"
 gson = "2.11.0"
 hilt = "2.51.1"
+junitJunit = "4.12"
+junitKtx = "1.2.1"
 
 [libraries]
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -64,6 +66,8 @@ gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson" }
 retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit" }
 squareup-picasso = { module = "com.squareup.picasso:picasso" }
+junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

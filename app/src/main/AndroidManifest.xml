@@ -17,6 +17,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.activities.MyRecipes"
+            android:exported="false" />
+        <activity
             android:name=".utils.LoadingActivity"
             android:exported="false" />
         <activity

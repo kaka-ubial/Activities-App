@@ -3,7 +3,7 @@ package com.example.intentpractice.data.repository
 import com.example.intentpractice.data.dao.UserDao
 import com.example.intentpractice.data.model.User
 
-class UserRepository(private val userDao: UserDao) {
+open class UserRepository(private val userDao: UserDao) {
 
     suspend fun insert(user: User): Long {
         return userDao.insert(user)
