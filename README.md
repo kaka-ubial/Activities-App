@@ -1,5 +1,8 @@
 # MealLet
 
+## Video do aplicativo
+![](https://markdown-videos-api.jorgenkh.no/youtube/33DA_x8idlk)
+
 ## Descrição
 
 O **MealLet** é um aplicativo Android desenvolvido em Kotlin com uma arquitetura baseada nos princípios de Clean Architecture e SOLID. O aplicativo faz uso de diversas bibliotecas modernas, como Retrofit para chamadas de API, Hilt para injeção de dependências, e ViewModel para gerenciamento de estado e ciclo de vida. Ele segue a abordagem Model-View-ViewModel (MVVM), garantindo a separação clara de responsabilidades e facilitando a escalabilidade e manutenção do código.
