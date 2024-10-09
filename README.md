@@ -1,7 +1,7 @@
 # MealLet
 
 ## Video do aplicativo
-[![](https://markdown-videos-api.jorgenkh.no/youtube/33DA_x8idlk)]([https://www.youtube.com/watch?v=33DA_x8idlk](https://youtu.be/85blZ22s0Dk))
+[![](https://markdown-videos-api.jorgenkh.no/youtube/33DA_x8idlk)]([(https://youtu.be/85blZ22s0Dk)])
 
 ## Descrição
 
